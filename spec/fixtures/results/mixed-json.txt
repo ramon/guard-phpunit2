@@ -1,0 +1,110 @@
+{
+    "event": "suiteStart",
+    "suite": "Mixed",
+    "tests": 5
+}{
+    "event": "testStart",
+    "suite": "Mixed",
+    "test": "Mixed::testPass"
+}{
+    "event": "test",
+    "suite": "Mixed",
+    "test": "Mixed::testPass",
+    "status": "pass",
+    "time": 0.0012249946594238,
+    "trace": [
+
+    ],
+    "message": "",
+    "output": ""
+}{
+    "event": "testStart",
+    "suite": "Mixed",
+    "test": "Mixed::testFail"
+}{
+    "event": "test",
+    "suite": "Mixed",
+    "test": "Mixed::testFail",
+    "status": "fail",
+    "time": 0.00089907646179199,
+    "trace": [
+        {
+            "file": "\/Users\/mburke\/personal\/guard-phpunit2\/spec\/fixtures\/mixed.php",
+            "line": 9,
+            "function": "assertTrue",
+            "class": "PHPUnit_Framework_Assert",
+            "type": "::",
+            "args": [
+                false
+            ]
+        }
+    ],
+    "message": "Failed asserting that false is true.",
+    "output": ""
+}{
+    "event": "testStart",
+    "suite": "Mixed",
+    "test": "Mixed::testError"
+}{
+    "event": "test",
+    "suite": "Mixed",
+    "test": "Mixed::testError",
+    "status": "error",
+    "time": 0.0003211498260498,
+    "trace": [
+        {
+            "file": "\/Users\/mburke\/personal\/guard-phpunit2\/spec\/fixtures\/mixed.php",
+            "line": 13
+        }
+    ],
+    "message": "Broked!",
+    "output": ""
+}{
+    "event": "testStart",
+    "suite": "Mixed",
+    "test": "Mixed::testSkipped"
+}{
+    "event": "test",
+    "suite": "Mixed",
+    "test": "Mixed::testSkipped",
+    "status": "error",
+    "time": 0.0005791187286377,
+    "trace": [
+        {
+            "file": "\/Users\/mburke\/personal\/guard-phpunit2\/spec\/fixtures\/mixed.php",
+            "line": 17,
+            "function": "markTestSkipped",
+            "class": "PHPUnit_Framework_Assert",
+            "type": "::",
+            "args": [
+
+            ]
+        }
+    ],
+    "message": "Skipped Test: ",
+    "output": ""
+}{
+    "event": "testStart",
+    "suite": "Mixed",
+    "test": "Mixed::testIncomplete"
+}{
+    "event": "test",
+    "suite": "Mixed",
+    "test": "Mixed::testIncomplete",
+    "status": "error",
+    "time": 0.00052285194396973,
+    "trace": [
+        {
+            "file": "\/Users\/mburke\/personal\/guard-phpunit2\/spec\/fixtures\/mixed.php",
+            "line": 21,
+            "function": "markTestIncomplete",
+            "class": "PHPUnit_Framework_Assert",
+            "type": "::",
+            "args": [
+
+            ]
+        }
+    ],
+    "message": "Incomplete Test: ",
+    "output": ""
+}
