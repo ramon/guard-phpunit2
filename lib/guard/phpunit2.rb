@@ -12,6 +12,7 @@ module Guard
     autoload :Formatter, 'guard/phpunit2/formatter'
     autoload :Notifier,  'guard/phpunit2/notifier'
     autoload :Runner,    'guard/phpunit2/runner'
+    autoload :LogReader, 'guard/phpunit2/logreader'
 
     VERSION = '0.2.5'
 
