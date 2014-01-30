@@ -4,7 +4,7 @@ source "http://rubygems.org"
 gemspec
 
 gem 'rake'
-gem 'pry'
+gem 'pry', '0.9.12.2'
 
 require 'rbconfig'
 
