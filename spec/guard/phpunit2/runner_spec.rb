@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Guard::PHPUnit2::Runner do
 
   let(:formatter) { Guard::PHPUnit2::Formatter }
+  let(:logreader) { Guard::PHPUnit2::LogReader }
   let(:notifier)  { Guard::PHPUnit2::Notifier  }
   let(:ui)        { Guard::UI                 }
 
@@ -68,19 +69,19 @@ describe Guard::PHPUnit2::Runner do
       end
 
       context 'when PHPUnit executes the tests' do
-        it 'parses the tests output' do
-          output = load_phpunit_output('passing')
-          subject.stub(:execute_command).and_return(output)
+        it 'parses the tests log output' do
+          log    = load_phpunit_output('passing-json')
+          subject.stub(:execute_phpunit).and_return(log)
 
-          formatter.should_receive(:parse_output).with(output)
+          logreader.should_receive(:parse_output).with(log)
 
           subject.run( ['tests'] )
         end
 
         it 'notifies about the tests output' do
-          output = load_phpunit_output('passing')
-          subject.stub(:execute_command).and_return(output)
-          subject.should_receive(:notify_results).with(output, anything())
+          log = load_phpunit_output('passing-json')
+          subject.stub(:execute_phpunit).and_return(log)
+          subject.should_receive(:notify_results).with(log, anything())
 
           subject.run( ['tests'] )
         end
@@ -90,7 +91,7 @@ describe Guard::PHPUnit2::Runner do
 
           output = load_phpunit_output('failing')
           subject.stub(:execute_command).and_return(output)
-          subject.should_receive(:notify_results).with(output, anything())
+          subject.should_receive(:notify_results).with(anything(), anything())
 
           subject.run( ['tests'] )
         end
@@ -100,7 +101,7 @@ describe Guard::PHPUnit2::Runner do
 
           output = load_phpunit_output('errors')
           subject.stub(:execute_command).and_return(output)
-          subject.should_receive(:notify_results).with(output, anything())
+          subject.should_receive(:notify_results).with(anything(), anything())
 
           subject.run( ['tests'] )
         end
@@ -164,6 +165,8 @@ describe Guard::PHPUnit2::Runner do
 
       it 'creates a tests folder (tmpdir)' do
         subject.should_receive(:create_tests_folder_for).with(instance_of(Array))
+        subject.stub(:execute_phpunit).and_return(load_phpunit_output('passing-json'))
+        subject.stub(:notify_results)
         subject.run( ['spec/fixtures/sampleTest.php', 'spec/fixtures/emptyTest.php'] )
       end
 

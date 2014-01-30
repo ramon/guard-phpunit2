@@ -1,6 +1,10 @@
 require 'json'
 module Guard
   class PHPUnit2
+    # Parses the --log-json output of PHPUnit
+    #
+    # @author Matt Burke <burkemd1+github@gmail.com>
+    # @since 2014-01-30
     module LogReader
       class << self
 
@@ -25,14 +29,18 @@ module Guard
           skips    = 0
           duration = 0
 
-          tests = log.first['tests']
-          log.each do |event|
-            passes   += 1 if passed_test?(event)
-            failures += 1 if failed_test?(event)
-            skips    += 1 if skipped_test?(event)
-            errors   += 1 if error_test?(event)
+          # If we don't have an array of events then nothing really happened
+          #
+          if (log.first)
+            tests = log.first['tests']
+            log.each do |event|
+              passes   += 1 if passed_test?(event)
+              failures += 1 if failed_test?(event)
+              skips    += 1 if skipped_test?(event)
+              errors   += 1 if error_test?(event)
 
-            duration += event['time'] if event['time']
+              duration += event['time'] if event['time']
+            end
           end
 
           {
