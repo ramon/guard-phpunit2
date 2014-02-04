@@ -1,0 +1,77 @@
+{
+    "event": "suiteStart",
+    "suite": "Skipped",
+    "tests": 3
+}{
+    "event": "testStart",
+    "suite": "Skipped",
+    "test": "Skipped::testSkipped"
+}{
+    "event": "test",
+    "suite": "Skipped",
+    "test": "Skipped::testSkipped",
+    "status": "error",
+    "time": 0.0013699531555176,
+    "trace": [
+        {
+            "file": "\/Users\/mburke\/personal\/guard-phpunit2\/spec\/fixtures\/skipped.php",
+            "line": 5,
+            "function": "markTestSkipped",
+            "class": "PHPUnit_Framework_Assert",
+            "type": "::",
+            "args": [
+
+            ]
+        }
+    ],
+    "message": "Skipped Test: ",
+    "output": ""
+}{
+    "event": "testStart",
+    "suite": "Skipped",
+    "test": "Skipped::testIncomplete"
+}{
+    "event": "test",
+    "suite": "Skipped",
+    "test": "Skipped::testIncomplete",
+    "status": "error",
+    "time": 0.00050210952758789,
+    "trace": [
+        {
+            "file": "\/Users\/mburke\/personal\/guard-phpunit2\/spec\/fixtures\/skipped.php",
+            "line": 9,
+            "function": "markTestIncomplete",
+            "class": "PHPUnit_Framework_Assert",
+            "type": "::",
+            "args": [
+
+            ]
+        }
+    ],
+    "message": "Incomplete Test: ",
+    "output": ""
+}{
+    "event": "testStart",
+    "suite": "Skipped",
+    "test": "Skipped::testNumberThree"
+}{
+    "event": "test",
+    "suite": "Skipped",
+    "test": "Skipped::testNumberThree",
+    "status": "error",
+    "time": 0.00030303001403809,
+    "trace": [
+        {
+            "file": "\/Users\/mburke\/personal\/guard-phpunit2\/spec\/fixtures\/skipped.php",
+            "line": 13,
+            "function": "markTestSkipped",
+            "class": "PHPUnit_Framework_Assert",
+            "type": "::",
+            "args": [
+
+            ]
+        }
+    ],
+    "message": "Skipped Test: ",
+    "output": ""
+}

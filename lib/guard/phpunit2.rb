@@ -13,6 +13,7 @@ module Guard
     autoload :Formatter, 'guard/phpunit2/formatter'
     autoload :Notifier,  'guard/phpunit2/notifier'
     autoload :Runner,    'guard/phpunit2/runner'
+    autoload :LogReader, 'guard/phpunit2/logreader'
 
     DEFAULT_OPTIONS = {
       :all_on_start   => true,

@@ -67,15 +67,12 @@ module Guard
 
           if paths.length == 1
             tests_path = paths.first
-            output = execute_command phpunit_command(tests_path, options)
+            log = execute_phpunit(tests_path, options)
           else
             create_tests_folder_for(paths) do |tests_folder|
-              output = execute_command phpunit_command(tests_folder, options)
+              log = execute_phpunit(tests_folder, options)
             end
           end
-          
-          # print the output to the terminal
-          puts output
           
           # return false in case the system call fails with no status!
           return false if $?.nil?
@@ -84,7 +81,7 @@ module Guard
           success = $?.success?
 
           if success or tests_contain_failures? or tests_contain_errors?
-            notify_results(output, options)
+            notify_results(log, options)
           else
             notify_failure(options)
           end
@@ -107,8 +104,8 @@ module Guard
         # @param [String] output the tests output
         # @param (see #run)
         #
-        def notify_results(output, options)
-          results = Formatter.parse_output(output)
+        def notify_results(log, options)
+          results = LogReader.parse_output(log)
           Notifier.notify_results(results)
         end
 
@@ -174,7 +171,7 @@ module Guard
         # @param (see #run)
         # @see #run_tests
         #
-        def phpunit_command(path, options)
+        def phpunit_command(path, options, logfile)
           formatter_path = File.expand_path( File.join( File.dirname(__FILE__), '..', 'phpunit', 'formatters', 'PHPUnit-Progress') )
           
           command = "phpunit"
@@ -184,6 +181,7 @@ module Guard
           cmd_parts << command
           cmd_parts << "--include-path #{formatter_path}"
           cmd_parts << "--printer PHPUnit_Extensions_Progress_ResultPrinter"
+          cmd_parts << "--log-json #{logfile}"
           cmd_parts << options[:cli] if options[:cli]
           cmd_parts << path
 
@@ -197,6 +195,18 @@ module Guard
         #
         def execute_command(command)
           %x{#{command}}
+        end
+
+        def execute_phpunit(tests_path, options)
+          log_file = Tempfile.new "guard-phpunit2"
+          output = execute_command(phpunit_command(tests_path, options, log_file.path))
+          puts output
+
+          log = log_file.read
+          log_file.close
+          log_file.unlink
+
+          log
         end
       end
     end

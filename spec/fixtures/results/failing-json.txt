@@ -1,0 +1,53 @@
+{
+    "event": "suiteStart",
+    "suite": "Fail2",
+    "tests": 2
+}{
+    "event": "testStart",
+    "suite": "Fail2",
+    "test": "Fail2::testTrueIsTrue"
+}{
+    "event": "test",
+    "suite": "Fail2",
+    "test": "Fail2::testTrueIsTrue",
+    "status": "fail",
+    "time": 0.0018670558929443,
+    "trace": [
+        {
+            "file": "\/Users\/mburke\/personal\/guard-phpunit2\/spec\/fixtures\/fail2.php",
+            "line": 5,
+            "function": "assertTrue",
+            "class": "PHPUnit_Framework_Assert",
+            "type": "::",
+            "args": [
+                false
+            ]
+        }
+    ],
+    "message": "Failed asserting that false is true.",
+    "output": ""
+}{
+    "event": "testStart",
+    "suite": "Fail2",
+    "test": "Fail2::testFalseIsFalse"
+}{
+    "event": "test",
+    "suite": "Fail2",
+    "test": "Fail2::testFalseIsFalse",
+    "status": "fail",
+    "time": 0.00041508674621582,
+    "trace": [
+        {
+            "file": "\/Users\/mburke\/personal\/guard-phpunit2\/spec\/fixtures\/fail2.php",
+            "line": 9,
+            "function": "assertFalse",
+            "class": "PHPUnit_Framework_Assert",
+            "type": "::",
+            "args": [
+                true
+            ]
+        }
+    ],
+    "message": "Failed asserting that true is false.",
+    "output": ""
+}

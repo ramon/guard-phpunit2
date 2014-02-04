@@ -1,0 +1,319 @@
+{
+    "event": "suiteStart",
+    "suite": ".",
+    "tests": 14
+}{
+    "event": "suiteStart",
+    "suite": "Fail2",
+    "tests": 2
+}{
+    "event": "testStart",
+    "suite": "Fail2",
+    "test": "Fail2::testTrueIsTrue"
+}{
+    "event": "test",
+    "suite": "Fail2",
+    "test": "Fail2::testTrueIsTrue",
+    "status": "fail",
+    "time": 0.0017910003662109,
+    "trace": [
+        {
+            "file": "\/Users\/mburke\/personal\/guard-phpunit2\/spec\/fixtures\/failureSampleTest.php",
+            "line": 5,
+            "function": "assertTrue",
+            "class": "PHPUnit_Framework_Assert",
+            "type": "::",
+            "args": [
+                false
+            ]
+        }
+    ],
+    "message": "Failed asserting that false is true.",
+    "output": ""
+}{
+    "event": "testStart",
+    "suite": "Fail2",
+    "test": "Fail2::testFalseIsFalse"
+}{
+    "event": "test",
+    "suite": "Fail2",
+    "test": "Fail2::testFalseIsFalse",
+    "status": "fail",
+    "time": 0.00045895576477051,
+    "trace": [
+        {
+            "file": "\/Users\/mburke\/personal\/guard-phpunit2\/spec\/fixtures\/failureSampleTest.php",
+            "line": 9,
+            "function": "assertFalse",
+            "class": "PHPUnit_Framework_Assert",
+            "type": "::",
+            "args": [
+                true
+            ]
+        }
+    ],
+    "message": "Failed asserting that true is false.",
+    "output": ""
+}{
+    "event": "suiteStart",
+    "suite": "Mixed",
+    "tests": 5
+}{
+    "event": "testStart",
+    "suite": "Mixed",
+    "test": "Mixed::testPass"
+}{
+    "event": "test",
+    "suite": "Mixed",
+    "test": "Mixed::testPass",
+    "status": "pass",
+    "time": 0.00029397010803223,
+    "trace": [
+
+    ],
+    "message": "",
+    "output": ""
+}{
+    "event": "testStart",
+    "suite": "Mixed",
+    "test": "Mixed::testFail"
+}{
+    "event": "test",
+    "suite": "Mixed",
+    "test": "Mixed::testFail",
+    "status": "fail",
+    "time": 0.00030398368835449,
+    "trace": [
+        {
+            "file": "\/Users\/mburke\/personal\/guard-phpunit2\/spec\/fixtures\/mixedSampleTest.php",
+            "line": 9,
+            "function": "assertTrue",
+            "class": "PHPUnit_Framework_Assert",
+            "type": "::",
+            "args": [
+                false
+            ]
+        }
+    ],
+    "message": "Failed asserting that false is true.",
+    "output": ""
+}{
+    "event": "testStart",
+    "suite": "Mixed",
+    "test": "Mixed::testError"
+}{
+    "event": "test",
+    "suite": "Mixed",
+    "test": "Mixed::testError",
+    "status": "error",
+    "time": 0.00028800964355469,
+    "trace": [
+        {
+            "file": "\/Users\/mburke\/personal\/guard-phpunit2\/spec\/fixtures\/mixedSampleTest.php",
+            "line": 13
+        }
+    ],
+    "message": "Broked!",
+    "output": ""
+}{
+    "event": "testStart",
+    "suite": "Mixed",
+    "test": "Mixed::testSkipped"
+}{
+    "event": "test",
+    "suite": "Mixed",
+    "test": "Mixed::testSkipped",
+    "status": "error",
+    "time": 0.0005030632019043,
+    "trace": [
+        {
+            "file": "\/Users\/mburke\/personal\/guard-phpunit2\/spec\/fixtures\/mixedSampleTest.php",
+            "line": 17,
+            "function": "markTestSkipped",
+            "class": "PHPUnit_Framework_Assert",
+            "type": "::",
+            "args": [
+
+            ]
+        }
+    ],
+    "message": "Skipped Test: ",
+    "output": ""
+}{
+    "event": "testStart",
+    "suite": "Mixed",
+    "test": "Mixed::testIncomplete"
+}{
+    "event": "test",
+    "suite": "Mixed",
+    "test": "Mixed::testIncomplete",
+    "status": "error",
+    "time": 0.00046014785766602,
+    "trace": [
+        {
+            "file": "\/Users\/mburke\/personal\/guard-phpunit2\/spec\/fixtures\/mixedSampleTest.php",
+            "line": 21,
+            "function": "markTestIncomplete",
+            "class": "PHPUnit_Framework_Assert",
+            "type": "::",
+            "args": [
+
+            ]
+        }
+    ],
+    "message": "Incomplete Test: ",
+    "output": ""
+}{
+    "event": "suiteStart",
+    "suite": "Pass2",
+    "tests": 2
+}{
+    "event": "testStart",
+    "suite": "Pass2",
+    "test": "Pass2::testTrueIsTrue"
+}{
+    "event": "test",
+    "suite": "Pass2",
+    "test": "Pass2::testTrueIsTrue",
+    "status": "pass",
+    "time": 0.00026488304138184,
+    "trace": [
+
+    ],
+    "message": "",
+    "output": ""
+}{
+    "event": "testStart",
+    "suite": "Pass2",
+    "test": "Pass2::testFalseIsFalse"
+}{
+    "event": "test",
+    "suite": "Pass2",
+    "test": "Pass2::testFalseIsFalse",
+    "status": "pass",
+    "time": 0.00026392936706543,
+    "trace": [
+
+    ],
+    "message": "",
+    "output": ""
+}{
+    "event": "suiteStart",
+    "suite": "sampleTest",
+    "tests": 2
+}{
+    "event": "testStart",
+    "suite": "sampleTest",
+    "test": "sampleTest::testTrueIsTrue"
+}{
+    "event": "test",
+    "suite": "sampleTest",
+    "test": "sampleTest::testTrueIsTrue",
+    "status": "pass",
+    "time": 0.000244140625,
+    "trace": [
+
+    ],
+    "message": "",
+    "output": ""
+}{
+    "event": "testStart",
+    "suite": "sampleTest",
+    "test": "sampleTest::testTrueIsFalse"
+}{
+    "event": "test",
+    "suite": "sampleTest",
+    "test": "sampleTest::testTrueIsFalse",
+    "status": "fail",
+    "time": 0.00027990341186523,
+    "trace": [
+        {
+            "file": "\/Users\/mburke\/personal\/guard-phpunit2\/spec\/fixtures\/sampleTest.php",
+            "line": 10,
+            "function": "assertTrue",
+            "class": "PHPUnit_Framework_Assert",
+            "type": "::",
+            "args": [
+                false
+            ]
+        }
+    ],
+    "message": "Failed asserting that false is true.",
+    "output": ""
+}{
+    "event": "suiteStart",
+    "suite": "Skipped",
+    "tests": 3
+}{
+    "event": "testStart",
+    "suite": "Skipped",
+    "test": "Skipped::testSkipped"
+}{
+    "event": "test",
+    "suite": "Skipped",
+    "test": "Skipped::testSkipped",
+    "status": "error",
+    "time": 0.00028705596923828,
+    "trace": [
+        {
+            "file": "\/Users\/mburke\/personal\/guard-phpunit2\/spec\/fixtures\/skippedSampleTest.php",
+            "line": 5,
+            "function": "markTestSkipped",
+            "class": "PHPUnit_Framework_Assert",
+            "type": "::",
+            "args": [
+
+            ]
+        }
+    ],
+    "message": "Skipped Test: ",
+    "output": ""
+}{
+    "event": "testStart",
+    "suite": "Skipped",
+    "test": "Skipped::testIncomplete"
+}{
+    "event": "test",
+    "suite": "Skipped",
+    "test": "Skipped::testIncomplete",
+    "status": "error",
+    "time": 0.00029921531677246,
+    "trace": [
+        {
+            "file": "\/Users\/mburke\/personal\/guard-phpunit2\/spec\/fixtures\/skippedSampleTest.php",
+            "line": 9,
+            "function": "markTestIncomplete",
+            "class": "PHPUnit_Framework_Assert",
+            "type": "::",
+            "args": [
+
+            ]
+        }
+    ],
+    "message": "Incomplete Test: ",
+    "output": ""
+}{
+    "event": "testStart",
+    "suite": "Skipped",
+    "test": "Skipped::testNumberThree"
+}{
+    "event": "test",
+    "suite": "Skipped",
+    "test": "Skipped::testNumberThree",
+    "status": "error",
+    "time": 0.00026488304138184,
+    "trace": [
+        {
+            "file": "\/Users\/mburke\/personal\/guard-phpunit2\/spec\/fixtures\/skippedSampleTest.php",
+            "line": 13,
+            "function": "markTestSkipped",
+            "class": "PHPUnit_Framework_Assert",
+            "type": "::",
+            "args": [
+
+            ]
+        }
+    ],
+    "message": "Skipped Test: ",
+    "output": ""
+}

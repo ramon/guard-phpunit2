@@ -1,0 +1,35 @@
+{
+    "event": "suiteStart",
+    "suite": "Pass2",
+    "tests": 2
+}{
+    "event": "testStart",
+    "suite": "Pass2",
+    "test": "Pass2::testTrueIsTrue"
+}{
+    "event": "test",
+    "suite": "Pass2",
+    "test": "Pass2::testTrueIsTrue",
+    "status": "pass",
+    "time": 0.0012128353118896,
+    "trace": [
+
+    ],
+    "message": "",
+    "output": ""
+}{
+    "event": "testStart",
+    "suite": "Pass2",
+    "test": "Pass2::testFalseIsFalse"
+}{
+    "event": "test",
+    "suite": "Pass2",
+    "test": "Pass2::testFalseIsFalse",
+    "status": "pass",
+    "time": 0.00036501884460449,
+    "trace": [
+
+    ],
+    "message": "",
+    "output": ""
+}
