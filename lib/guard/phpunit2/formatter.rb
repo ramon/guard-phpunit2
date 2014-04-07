@@ -15,10 +15,10 @@ module Guard
         #
         def parse_output(text)
           results = {
-            :tests    => look_for_words_in('(?:Tests:|tests)',    text),
-            :failures => look_for_words_in('Failures:', text),
-            :errors   => look_for_words_in('Errors:', text),
-            :pending  => look_for_words_in(['Skipped:', 'Incomplete:'], text),
+            :tests    => look_for_words_in('(tests)',    text),
+            :failures => look_for_words_in('failures', text),
+            :errors   => look_for_words_in('errors', text),
+            :pending  => look_for_words_in(['skipped', 'incomplete'], text),
             :duration => look_for_duration_in(text)
           }
           results.freeze
@@ -37,28 +37,15 @@ module Guard
           count = 0
           strings_list = Array(strings_list)
           
-          if text =~ %r{FAILURES} || text =~ %r{OK, but incomplete or skipped tests!}
-            strings_list.each do |s|
-              text =~ %r{
-                #{s}    # then the string
-                \s+     # then a space
-                (\d+)   # count of what we are looking for
-                .*      # then whatever
-                $      # start looking at the end of the text
-              }x
-              count += $1.to_i unless $1.nil?
-            end
-          else  
-            strings_list.each do |s|
-              text =~ %r{
-                (\d+)   # count of what we are looking for
-                \s+     # then a space
-                #{s}    # then the string
-                .*      # then whatever
-                $      # start looking at the end of the text
-              }x
-              count += $1.to_i unless $1.nil?
-            end
+          strings_list.each do |s|
+            text =~ %r{
+              (\d+)   # count of what we are looking for
+              \s+     # then a space
+              #{s}    # then the string
+              .*      # then whatever
+              $      # start looking at the end of the text
+            }x
+            count += $1.to_i unless $1.nil?
           end
           
           count
