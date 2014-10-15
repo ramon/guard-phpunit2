@@ -18,7 +18,8 @@ module Guard
         def clean(paths)
           paths.uniq!
           paths.compact!
-          populate_test_files()
+          #populate_test_files()
+		  tests_files
           paths = paths.select { |p| test_file?(p) }
           clear_tests_files_list
           paths
@@ -27,7 +28,8 @@ module Guard
         private
 
 
-        def populate_test_files()
+        def tests_files
+        #def populate_test_files()
           @tests_files ||= []
 
           _files = []
@@ -59,10 +61,12 @@ module Guard
         # Scans the tests path and keeps a list of all
         # tests paths.
         #
-        def tests_files
+        #def tests_files
           #Uses the current path for tests_path when unset.
-          @tests_files ||= Dir.glob( File.join(tests_path, '**', '*Test.php') )
-        end
+          #@tests_files ||= Dir.glob( File.join(tests_path, '**', '*Test.php') )
+          #populate_test_files()
+		  #@tests_files
+        #end
 
         # Clears the list of PHPUnit tests.
         #
