@@ -74,11 +74,12 @@ class PHPUnit_Extensions_Progress_ResultPrinter extends PHPUnit_TextUI_ResultPri
 
   /**
    * @param  array   $defects
-   * @param  integer $count
    * @param  string  $type
    */
-  protected function printDefects(array $defects, $count, $type)
+  protected function printDefects(array $defects, $type)
   {
+    $count = count($defects);
+
     if ($count == 0) {
       return;
     }
