@@ -40,6 +40,7 @@ module Guard
         end
 
         def execute_phpunit(tests_folder, options)
+	  require 'tempfile'
           log_file = Tempfile.new "guard-phpunit2"
           execute_command(phpunit_command(tests_folder, options, log_file.path))
 

@@ -34,7 +34,7 @@ module Guard
           return false if paths.empty?
 
           unless phpunit_exists?(options)
-            UI.error('the provided php unit command is invalid or phpunit is not installed on your machine.', :reset => true)
+            Compat::UI.error('the provided php unit command is invalid or phpunit is not installed on your machine.', :reset => true)
             return false
           end
 
@@ -100,7 +100,7 @@ module Guard
         #
         def notify_start(paths, options)
           message = options[:message] || "Running: #{paths.join(' ')}"
-          UI.info(message, :reset => true)
+          Compat::UI.info(message, :reset => true)
         end
 
         # Displays a notification about the tests results.
