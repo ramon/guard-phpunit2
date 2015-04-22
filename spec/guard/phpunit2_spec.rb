@@ -113,7 +113,7 @@ describe Guard::PHPUnit2 do
       let(:guard) { Guard::PHPUnit2.new({:realtime => true }) }
       it 'should call run on the realtimerunner' do
         Guard::PHPUnit2::RealtimeRunner.should_receive(:run).and_return(true)
-        guard.run_on_changes ['tests/firstTest.php']
+        guard.run_on_modifications ['tests/firstTest.php']
       end
     end
 
@@ -122,12 +122,12 @@ describe Guard::PHPUnit2 do
 
       it 'should call run on the Runner class' do
         Guard::PHPUnit2::Runner.should_receive(:run).and_return(true)
-        guard.run_on_changes ['tests/firstTest.php']
+        guard.run_on_modifications ['tests/firstTest.php']
       end
     end
   end
 
-  describe '#run_on_changes' do
+  describe '#run_on_modifications' do
     before do
       inspector.stub(:clean) { |paths| paths }
     end
@@ -135,22 +135,22 @@ describe Guard::PHPUnit2 do
     it 'cleans the changed paths before running the tests' do
       runner.stub(:run).and_return(true)
       inspector.should_receive(:clean).with(['tests/firstTest.php', 'tests/secondTest.php'])
-      subject.run_on_changes ['tests/firstTest.php', 'tests/secondTest.php']
+      subject.run_on_modifications ['tests/firstTest.php', 'tests/secondTest.php']
     end
 
     it 'runs the changed tests' do
       runner.should_receive(:run).with(['tests/firstTest.php', 'tests/secondTest.php'], anything).and_return(true)
-      subject.run_on_changes ['tests/firstTest.php', 'tests/secondTest.php']
+      subject.run_on_modifications ['tests/firstTest.php', 'tests/secondTest.php']
     end
 
     it 'throws :task_has_failed when an error occurs' do
       runner.should_receive(:run).with(['tests/firstTest.php', 'tests/secondTest.php'], anything).and_return(false)
-      expect { subject.run_on_changes ['tests/firstTest.php', 'tests/secondTest.php'] }.to throw_symbol :task_has_failed
+      expect { subject.run_on_modifications ['tests/firstTest.php', 'tests/secondTest.php'] }.to throw_symbol :task_has_failed
     end
 
     it 'passes the options to the runner' do
       runner.should_receive(:run).with(anything, hash_including(defaults)).and_return(true)
-      subject.run_on_changes ['tests/firstTest.php', 'tests/secondTest.php']
+      subject.run_on_modifications ['tests/firstTest.php', 'tests/secondTest.php']
     end
 
     context 'when tests fail' do
@@ -161,12 +161,12 @@ describe Guard::PHPUnit2 do
 
       context 'with the :keep_failed option set to true' do
         it 'runs the next changed files plus the failed tests' do
-          expect { subject.run_on_changes ['tests/firstTest.php'] }.to throw_symbol :task_has_failed
+          expect { subject.run_on_modifications ['tests/firstTest.php'] }.to throw_symbol :task_has_failed
           runner.should_receive(:run).with(
             ['tests/secondTest.php', 'tests/firstTest.php'], anything
           ).and_return(true)
 
-          subject.run_on_changes ['tests/secondTest.php']
+          subject.run_on_modifications ['tests/secondTest.php']
         end
       end
 
@@ -174,12 +174,12 @@ describe Guard::PHPUnit2 do
 	subject { Guard::PHPUnit2.new(:keep_failed => false) }
 
         it 'runs the next changed files normally without the failed tests' do
-          expect { subject.run_on_changes ['tests/firstTest.php'] }.to throw_symbol :task_has_failed
+          expect { subject.run_on_modifications ['tests/firstTest.php'] }.to throw_symbol :task_has_failed
           runner.should_receive(:run).with(
             ['tests/secondTest.php'], anything
           ).and_return(true)
 
-          subject.run_on_changes ['tests/secondTest.php']
+          subject.run_on_modifications ['tests/secondTest.php']
         end
       end
     end
@@ -192,14 +192,14 @@ describe Guard::PHPUnit2 do
       context 'with the :all_after_pass option set to true' do
         it 'calls #run_all' do
           subject.should_receive(:run_all)
-          expect { subject.run_on_changes ['tests/firstTest.php'] }.to throw_symbol :task_has_failed
-          subject.run_on_changes ['tests/firstTest.php']
+          expect { subject.run_on_modifications ['tests/firstTest.php'] }.to throw_symbol :task_has_failed
+          subject.run_on_modifications ['tests/firstTest.php']
         end
 
         it 'calls #run_all (2)' do
           expect { subject.run_all }.to throw_symbol :task_has_failed
           subject.should_receive(:run_all)
-          subject.run_on_changes ['tests/firstTest.php']
+          subject.run_on_modifications ['tests/firstTest.php']
         end
       end
 
@@ -208,14 +208,14 @@ describe Guard::PHPUnit2 do
 
         it 'does not call #run_all' do
           subject.should_not_receive(:run_all)
-          expect { subject.run_on_changes ['tests/firstTest.php'] }.to throw_symbol :task_has_failed
-          subject.run_on_changes ['tests/firstTest.php']
+          expect { subject.run_on_modifications ['tests/firstTest.php'] }.to throw_symbol :task_has_failed
+          subject.run_on_modifications ['tests/firstTest.php']
         end
 
         it 'does not call #run_all (2)' do
           expect { subject.run_all }.to throw_symbol :task_has_failed
           subject.should_not_receive(:run_all)
-          subject.run_on_changes ['tests/firstTest.php']
+          subject.run_on_modifications ['tests/firstTest.php']
         end
       end
     end

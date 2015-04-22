@@ -67,12 +67,12 @@ module Guard
       throw :task_has_failed unless success
     end
 
-    # Gets called when the watched tests have changes.
+    # Gets called when the watched tests have been modified.
     #
-    # @param [Array<String>] paths to the changed tests
+    # @param [Array<String>] paths to the modified tests
     # @raise (see #start)
     #
-    def run_on_changes(paths)
+    def run_on_modifications(paths)
       paths = Inspector.clean(paths + @failed_paths)
       success = runner.run(paths, options)
 
