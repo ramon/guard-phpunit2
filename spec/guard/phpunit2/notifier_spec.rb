@@ -1,8 +1,9 @@
 require 'spec_helper'
+require 'guard/phpunit2/notifier'
 
 describe Guard::PHPUnit2::Notifier do
 
-  let(:guard_notifier) { Guard::Notifier }
+  let(:guard_notifier) { Guard::Compat::UI }
 
   describe '.notify' do
     it 'calls the guard notifier' do

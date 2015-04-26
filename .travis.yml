@@ -2,6 +2,14 @@ language: ruby
 rvm:
   - 1.9.3
   - 2.0.0
+  - 2.1.2
+  - jruby
+env:
+  global:
+    - "JRUBY_OPTS=-Xcext.enabled=true"
+matrix:
+  allow_failures:
+    - rvm: jruby
 notifications:
   email:
     - ramon@codecraft63.com

@@ -16,9 +16,9 @@ module Guard
         def parse_output(text)
           results = {
             :tests    => look_for_words_in('(?:Tests:|tests)',    text),
-            :failures => look_for_words_in('Failures:', text),
+            :failures => look_for_words_in('(?:Failures:|failures)', text),
             :errors   => look_for_words_in('Errors:', text),
-            :pending  => look_for_words_in(['Skipped:', 'Incomplete:'], text),
+            :pending  => look_for_words_in(['(?:Skipped:|skipped)', 'Incomplete:'], text),
             :duration => look_for_duration_in(text)
           }
           results.freeze

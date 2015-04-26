@@ -13,7 +13,7 @@ module Guard
         # @param [Hash] options the notifier options
         #
         def notify(message, options)
-          ::Guard::Notifier.notify(message, options)
+          Compat::UI.notify(message, options)
         end
 
         # Displays a notification about the tests results.
