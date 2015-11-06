@@ -1,5 +1,4 @@
-require 'guard'
-require 'guard/guard'
+require 'guard/compat/plugin'
 require 'guard/phpunit2/version'
 
 module Guard
@@ -7,7 +6,7 @@ module Guard
   # The PHPUnit guard gets notified about system
   # events.
   #
-  class PHPUnit2 < Guard
+  class PHPUnit2 < Plugin
 
     autoload :Inspector, 'guard/phpunit2/inspector'
     autoload :Formatter, 'guard/phpunit2/formatter'
@@ -36,10 +35,10 @@ module Guard
     # @option options [String] :cli The CLI arguments passed to phpunit
     # @option options [String] :tests_path the path where all tests exist
     #
-    def initialize(watchers = [], options = {})
+    def initialize(options = {})
       defaults = DEFAULT_OPTIONS.clone
       @options = defaults.merge(options)
-      super(watchers, @options)
+      super(@options)
 
       @failed_paths     = []
       @previous_failed = false

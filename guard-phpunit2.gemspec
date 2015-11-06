@@ -15,7 +15,9 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = '>= 1.3.6'
   s.rubyforge_project = 'guard-phpunit2'
 
-  s.add_runtime_dependency 'guard', ['>= 1.1', '< 3.0']
+  s.add_dependency('guard-compat', '~> 1.2')
+
+  s.add_runtime_dependency 'guard', ['~> 2.0', '< 3.0']
 
   s.add_development_dependency 'bundler'
   s.add_development_dependency 'rspec'

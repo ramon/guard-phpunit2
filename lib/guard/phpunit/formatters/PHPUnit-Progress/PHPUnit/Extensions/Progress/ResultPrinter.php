@@ -50,13 +50,15 @@ class PHPUnit_Extensions_Progress_ResultPrinter extends PHPUnit_TextUI_ResultPri
     }
 
     if ($this->verbose) {
-      if ($result->deprecatedFeaturesCount() > 0) {
-        if ($result->failureCount() > 0) {
-          print "\n--\n\nDeprecated PHPUnit features are being used";
-        }
+      if (method_exists($result, 'deprecatedFeaturesCount')) {
+        if ($result->deprecatedFeaturesCount() > 0) {
+          if ($result->failureCount() > 0) {
+            print "\n--\n\nDeprecated PHPUnit features are being used";
+          }
 
-        foreach ($result->deprecatedFeatures() as $deprecatedFeature) {
-          $this->write($deprecatedFeature . "\n\n");
+          foreach ($result->deprecatedFeatures() as $deprecatedFeature) {
+            $this->write($deprecatedFeature . "\n\n");
+          }
         }
       }
 
@@ -297,21 +299,23 @@ class PHPUnit_Extensions_Progress_ResultPrinter extends PHPUnit_TextUI_ResultPri
       $this->write($this->red($footer));
     }
 
-    if ( ! $this->verbose &&
-      $result->deprecatedFeaturesCount() > 0 ) 
-    {
-      $message = sprintf(
-        "Warning: Deprecated PHPUnit features are being used %s times!\n".
-        "Use --verbose for more information.\n",
-        $result->deprecatedFeaturesCount()
-      );
+    if (method_exists($result, 'deprecatedFeaturesCount')) {
+      if ( ! $this->verbose &&
+        $result->deprecatedFeaturesCount() > 0 )
+      {
+        $message = sprintf(
+          "Warning: Deprecated PHPUnit features are being used %s times!\n".
+          "Use --verbose for more information.\n",
+          $result->deprecatedFeaturesCount()
+        );
 
-      if ($this->colors) {
-        $message = "\x1b[37;41m\x1b[2K" . $message .
-          "\x1b[0m";
+        if ($this->colors) {
+          $message = "\x1b[37;41m\x1b[2K" . $message .
+            "\x1b[0m";
+        }
+
+        $this->write("\n" . $message);
       }
-
-      $this->write("\n" . $message);
     }
 
     $this->writeNewLine();
@@ -428,8 +432,10 @@ class PHPUnit_Extensions_Progress_ResultPrinter extends PHPUnit_TextUI_ResultPri
     static $deletedHeader = false;
 
     if ( ! $deletedHeader ) {
-      ob_end_clean();
-      $deletedHeader = true;
+      if (ob_get_length() > 0) {
+        ob_end_clean();
+        $deletedHeader = true;
+      }
     }
 
     parent::writeProgress($progress);

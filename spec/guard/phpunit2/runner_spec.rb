@@ -4,7 +4,7 @@ describe Guard::PHPUnit2::Runner do
 
   let(:formatter) { Guard::PHPUnit2::Formatter }
   let(:notifier)  { Guard::PHPUnit2::Notifier  }
-  let(:ui)        { Guard::UI                 }
+  let(:ui)        { Guard::Compat::UI          }
 
   describe '#run' do
     before do
@@ -20,7 +20,7 @@ describe Guard::PHPUnit2::Runner do
 
     context 'when passed an empty paths list' do
       it 'returns false' do
-        subject.run([]).should be_false
+        subject.run([]).should be false
       end
     end
 

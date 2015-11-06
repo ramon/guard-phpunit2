@@ -41,7 +41,7 @@ search for tests and run them on start (if you enabled the `:all_on_start` optio
 
 ### Example PHP project
 
-The [PHPUnit documentaion][4] uses the [Object Freezer][5] library as an example on how
+The [PHPUnit documentation][4] uses the [Object Freezer][5] library as an example on how
 to organize tests. This project uses the `Tests` directory for its tests.
 
 An example of the Guardfile for the same project would look
