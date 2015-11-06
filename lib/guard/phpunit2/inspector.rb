@@ -18,8 +18,7 @@ module Guard
         def clean(paths)
           paths.uniq!
           paths.compact!
-          #populate_test_files()
-		  tests_files
+          populate_test_files
           paths = paths.select { |p| test_file?(p) }
           clear_tests_files_list
           paths
@@ -28,8 +27,7 @@ module Guard
         private
 
 
-        def tests_files
-        #def populate_test_files()
+        def populate_test_files
           @tests_files ||= []
 
           _files = []
