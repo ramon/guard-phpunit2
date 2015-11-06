@@ -14,7 +14,7 @@ platforms :ruby do
     gem 'growl',      '~> 1.0.3'
   end
   if RbConfig::CONFIG['target_os'] =~ /linux/i
-    gem 'rb-inotify', '~> 0.8.8'
+    gem 'rb-inotify', '~> 0.9'
     gem 'libnotify',  '~> 0.7.3'
   end
 end
@@ -24,7 +24,7 @@ platforms :jruby do
     gem 'growl',      '~> 1.0.3'
   end
   if RbConfig::CONFIG['target_os'] =~ /linux/i
-    gem 'rb-inotify', '~> 0.8.8'
+    gem 'rb-inotify', '~> 0.9'
     gem 'libnotify',  '~> 0.7.3'
   end
 end
