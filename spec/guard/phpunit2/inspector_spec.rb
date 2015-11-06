@@ -23,7 +23,7 @@ describe Guard::PHPUnit2::Inspector do
     end
 
     it 'frees up the list of tests files' do
-      subject.should_receive(:clear_tests_files_list)
+      subject.should_receive(:clear_tests_files_list).and_call_original
       subject.clean(['classTest.php'])
     end
   end

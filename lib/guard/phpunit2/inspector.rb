@@ -55,7 +55,7 @@ module Guard
         # @return [Boolean] whether the path a valid test or not
         #
         def test_file?(path)
-          tests_files.include?(path)
+          @tests_files.include?(path)
         end
 
         # Scans the tests path and keeps a list of all
