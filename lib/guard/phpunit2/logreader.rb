@@ -53,7 +53,7 @@ module Guard
           # @param [String] json log output from PPHUnit
           #  @return [String] properly-formed JSON string
           def clean_output(output)
-            "[#{output.gsub(/^}{/, '},{')}]"
+            "[#{output.gsub(/}{/, '},{')}]"
           end
 
           # Turns a float duration into a array of integer seconds and the 
