@@ -17,8 +17,8 @@ module Guard
           results = {
             :tests    => look_for_words_in('(?:Tests:|tests)',    text),
             :failures => look_for_words_in('(?:Failures:|failures)', text),
-            :errors   => look_for_words_in('Errors:', text),
-            :pending  => look_for_words_in(['(?:Skipped:|skipped)', 'Incomplete:'], text),
+            :errors   => look_for_words_in('(?:Errors:|errors)', text),
+            :pending  => look_for_words_in(['(?:Skipped:|skipped)', '(?:Incomplete:|incomplete)'], text),
             :duration => look_for_duration_in(text)
           }
           results.freeze
