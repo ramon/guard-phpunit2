@@ -11,6 +11,13 @@
  * @license    http://www.opensource.org/licenses/bsd-license.php  BSD License
  * @version    0.1
  */
+
+use PHPUnit\TextUI\ResultPrinter as PHPUnit_TextUI_ResultPrinter;
+use PHPUnit\Framework\Test as PHPUnit_Framework_Test;
+use PHPUnit\Framework\TestResult as PHPUnit_Framework_TestResult;
+use PHPUnit\Framework\TestFailure as PHPUnit_Framework_TestFailure;
+use PHPUnit\Framework\AssertionFailedError as PHPUnit_Framework_AssertionFailedError;
+
 class PHPUnit_Extensions_Progress_ResultPrinter extends PHPUnit_TextUI_ResultPrinter {
 
   /**
