@@ -1,11 +1,7 @@
 require 'spec_helper'
 
 describe Guard::PHPUnit2::Inspector do
-  before do
-    subject.tests_path = 'spec/fixtures'
-  end
-
-  describe 'clean' do
+  shared_examples 'clean' do
     it 'removes non-tests files' do
       subject.clean(['spec/fixtures/sampleTest.php', 'foo.php']).should == ['spec/fixtures/sampleTest.php']
     end
@@ -27,8 +23,28 @@ describe Guard::PHPUnit2::Inspector do
     end
 
     it 'frees up the list of tests files' do
-      subject.should_receive(:clear_tests_files_list)
+      subject.should_receive(:clear_tests_files_list).and_call_original
       subject.clean(['classTest.php'])
+    end
+  end
+
+  context '(when tests_path is an array)' do
+    before do
+      subject.tests_path = ['spec/fixtures']
+    end
+
+    describe 'clean' do
+      include_examples 'clean'
+    end
+  end
+
+  context '(when tests_path is a string)' do
+    before do
+      subject.tests_path = 'spec/fixtures'
+    end
+
+    describe 'clean' do
+      include_examples 'clean'
     end
   end
 end
